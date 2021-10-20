@@ -5,11 +5,62 @@ In cryptography, hashing is a much securer method than encryption. Because in en
 
 Hashing a password is secure however it is not a fool proof method if used alone. Because hackers use a method called hash table.
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+Level 1 Security Database
+===
+
+This is the least secure type. Even though user3@email.com has set up a super strong password, it is still exposed to those who can hack into your database.
+
+
+| User Email        | Password String                 |
+| ----------------- |:-------------------------------:|
+| user@email.com    | qwerty                          |
+| user2@email.com   | 12345                           |
+| user3@email.com   | 96"+F'_v=+.XwQ^c{x?2Mp8K'U6bD   |
+| user4@email.com   | qwerty                          |
+| user5@email.com   | 12345                           |
+
+
+Level 3 Security Database - Password Hashing
+===
+
+NPM Package(s) Used:
+md5
+
+This is a special type of function such as MD5 which converts normal password into a hashed version. Hash functions are super easy to encrypt but very hard to decode. It is like a one way ticket. So even if a hacker, hacks into your database, they can still not get the actual password of the people because decoding the passwords is almost impossible due to the nature of hashing functions.
+
+But it has a weakness. There are super easy passwords that are used in this database just like any database such as "qwerty" and "12345" and MD5 is a very popular method to hash, hacker can use a hash table which includes the MD5 or any other functions hashes of the easy passwords. Remember that same password always create the same hash version. So if a person knows what is the equivalent of "qwerty", he can expose all people. who has same password in database. As you can see "user@email.com" and "user4@email.com" has same hash results. Similarly, "user2@email.com" and "user5@email.com" has same hash results as well.
+
+| User Email        | Hash                                    |
+| ----------------- |:---------------------------------------:|
+| user@email.com    | d8578edf8458ce06fbc5bb76a58c5ca4        |
+| user2@email.com   | 827ccb0eea8a706c4c34a16891f84e7b        |
+| user3@email.com   | eeae00fa9767afd31155b672ccab9c75        |
+| user4@email.com   | d8578edf8458ce06fbc5bb76a58c5ca4        |
+| user5@email.com   | 827ccb0eea8a706c4c34a16891f84e7b        |
+
+
+Level 4 Security Database - Password Hashing and Salting - Salting Rounds
+===
+
+NPM Package(s) Used:
+md5
+bycrypt
+
+In password salting, a randomized combionation number added into the database. This randomized combination is concatenated into the existing password by NPM package "bycrypt". An example is given below.
+
+| User Email        | Salt              | Hash                                    |
+| ----------------- |:-----------------:|:---------------------------------------:|
+| user@email.com    | abc123def456hij   | 58f044920877b4051a4d010c309bbbbe        |
+
+
+
+| User Email        | Salt              | Hash                                    |
+| ----------------- |:-----------------:|:---------------------------------------:|
+| user@email.com    | abc123def456hij   | 58f044920877b4051a4d010c309bbbbe        |
+| user2@email.com   | xyz789def345rtg   | e4a3f07396962cafe54bfcfc218bd8be        |
+| user3@email.com   | gyr363xgy849che   | 1fe4cf99092f738cf5058c6fab6c80ff        |
+| user4@email.com   | ght624kyt130vbn   | 2235df64f79c8359c8718f7dff460489        |
+| user5@email.com   | oyg870xrp432tgr   | a57816cf0eb1ed4d504295f76857b21a        |
 
 
 md5
