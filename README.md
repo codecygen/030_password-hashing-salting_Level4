@@ -33,7 +33,11 @@ For our example, imagine our secret keyword is "jsdhnicgvvtrbjjv". Imagine encry
 
 As you can see down below, in this method, the longer the password, longer the password gets.
 
-| User Email        | Hash                                             |
+| Secret Keyword (Saved into .env file)        |
+| -------------------------------------------- |
+| jsdhnicgvvtrbjjv                             |
+
+| User Email        | Encrypted Password                               |
 | ----------------- |:------------------------------------------------:|
 | user@email.com    | EY7kBsNnWBy6vBmS2Mvzuw==                         |
 | user2@email.com   | yiFA2xQ1gwZJJ7s1k7zG6w==                         |
