@@ -5,10 +5,12 @@ In cryptography, hashing is a much securer method than encryption. Because in en
 
 Hashing a password is secure however it is not a fool proof method if used alone. Because hackers use a method called hash table.
 
-Level 1 Security Database
+Level 1 - Database Security - Password Strings
 ===
 
-This is the least secure type. Even though user3@email.com has set up a super strong password, it is still exposed to those who can hack into your database.
+This is the least secure type. Even though user3@email.com has set up a super strong password, it is still exposed to those who can hack into your database. Hackers can easily recover passwords of individuals and since people tend to use same passwords in different websites, hackers can possibly hack into their bank accounts or other sensitive data in different websites.
+
+An example database is given down below.
 
 
 | User Email        | Password String                 |
@@ -19,7 +21,7 @@ This is the least secure type. Even though user3@email.com has set up a super st
 | user4@email.com   | qwerty                          |
 | user5@email.com   | 12345                           |
 
-Level 2 Security Database - Data-Encryption
+Level 2 - Database Security - Data Encryption
 ===
 
 NPM Package(s) Used:
@@ -31,7 +33,9 @@ Problem with this method is, if someone can hack into your system, it would not 
 
 For our example, imagine our secret keyword is "jsdhnicgvvtrbjjv". Imagine encryption is performed using AES-256-CBC with a random, unique initialization vector for each operation.
 
-As you can see down below, in this method, the longer the password, longer the password gets.
+As you can see down below, the longer the password, longer the password gets.
+
+An example secret keyword and database is given down below.
 
 | Secret Keyword (Saved into .env file)        |
 | -------------------------------------------- |
@@ -45,7 +49,7 @@ As you can see down below, in this method, the longer the password, longer the p
 | user4@email.com   | EY7kBsNnWBy6vBmS2Mvzuw==                         |
 | user5@email.com   | yiFA2xQ1gwZJJ7s1k7zG6w==                         |
 
-Level 3 Security Database - Password Hashing
+Level 3 - Database Security - Password Hashing
 ===
 
 NPM Package(s) Used:
@@ -55,7 +59,7 @@ This is a special type of function such as MD5 which converts normal password in
 
 But it has a weakness. There are super easy passwords that are used in this database just like any database such as "qwerty" and "12345" and MD5 is a very popular method to hash, hacker can use a hash table which includes the MD5 or any other functions hashes of the easy passwords. Remember that same password always create the same hash version. So if a person knows what is the equivalent of "qwerty", he can expose all people. who has same password in database. As you can see "user@email.com" and "user4@email.com" has same hash results. Similarly, "user2@email.com" and "user5@email.com" has same hash results as well.
 
-Database looks like this:
+An example database is given down below.
 
 | User Email        | Hash                                    |
 | ----------------- |:---------------------------------------:|
@@ -66,7 +70,7 @@ Database looks like this:
 | user5@email.com   | 827ccb0eea8a706c4c34a16891f84e7b        |
 
 
-Level 4 Security Database - Password Hashing and Salting - Salting Rounds
+Level 4 - Database Security - Password Hashing and Salting, Salting Rounds
 ===
 
 NPM Package(s) Used:
@@ -81,7 +85,7 @@ Hash rounds is adding more rounds to the hash. Let's say if you want to add anot
 
 For our example, the password is only salted once (single round) down below.
 
-For a single round salted hash, our imaginary database looks like this:
+For a single round salted hash, our imaginary database looks like this,
 
 | User Email        | Salt              | Hash                                    |
 | ----------------- |:-----------------:|:---------------------------------------:|
