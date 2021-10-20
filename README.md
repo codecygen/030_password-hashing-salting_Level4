@@ -1,7 +1,16 @@
 In this project, instead of storing our passwords in database as it is, I will be using password hashing method
-with an npm package "md5". This is a Level 3 security for storing password in database.
+with an npm package "md5" and then salting with npm package "bycrypt". We can also set hash rounds with "bycrypt" to increase the computing time to hack a password with hash tables. This is a Level 4 security for storing password in database.
 
 In cryptography, hashing is a much securer method than encryption. Because in encryption, if the hacker can hack into your system and gets your secret key for encryption, he can decode the password in your database. However, hashing does not need a secret key and it is a type of encryption by using complex mathematical operations. Encryption is easy but decoding is almost impossible.
+
+Hashing a password is secure however it is not a fool proof method if used alone. Because hackers use a method called hash table.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 
 md5
 ===
