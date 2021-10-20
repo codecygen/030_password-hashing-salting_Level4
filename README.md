@@ -25,7 +25,7 @@ Level 2 Security Database - Data-Encryption
 NPM Package(s) Used:
 mongoose-encryption
 
-In this method, a secret keyword is saved as an environmental variable. This keyword is used by a special function to encrypt the passwords. As long as the secret keyword is not exposed to the hacker, person cannot decode the password.
+In this method, a secret keyword is saved as an environmental variable by the programmer. This keyword is used by a special function to encrypt the passwords. As long as the secret keyword is not exposed to the hacker, person cannot decode the password.
 
 Problem with this method is, if someone can hack into your system, it would not possibly be that hard to hack into your ".env" file and get your secret keyword to decode all passwords in the database.
 
@@ -69,17 +69,15 @@ NPM Package(s) Used:
 md5
 bycrypt
 
-In password salting, a randomized combionation number added into the database. This randomized combination is concatenated into the existing password by NPM package "bycrypt". An example is given below.
-
-How password hashing and salting works?
+In password salting, a randomized combination added into the database. This randomized combination is concatenated into the existing password by NPM package "bycrypt". An example is given below.
 
 Let's say "user@email.com" uses password "qwerty". Computer generates the random salting combination which is "abc123def456hij" for our example. Then, password gets concatenated by the system "qwertyabc123def456hij". Then this result is hashed and transformed into "58f044920877b4051a4d010c309bbbbe".
 
-Hash rounds is adding more rounds of the hash. Let's say if you want to add another hash round, system takes the first round's hash and concatenates again with the salt "58f044920877b4051a4d010c309bbbbeabc123def456hij". With this method, new hash is generated "32a6ad50240bc42beced6b41aeeb72d5". This is genius because every round makes the hash more complicated to be cracked with hash tables because the computing time increases exponentially.
+Hash rounds is adding more rounds to the hash. Let's say if you want to add another hash round, system takes the first round's hash and concatenates again with the salt "58f044920877b4051a4d010c309bbbbeabc123def456hij". With this method, new hash is generated "32a6ad50240bc42beced6b41aeeb72d5". This is genius because every round makes the hash more complicated to be cracked with hash tables because the computing time increases exponentially.
 
-For our example, the password is only salted once down below.
+For our example, the password is only salted once (single round) down below.
 
-For a single round salted hash in an imaginary database looks like this:
+For a single round salted hash, our imaginary database looks like this:
 
 | User Email        | Salt              | Hash                                    |
 | ----------------- |:-----------------:|:---------------------------------------:|
