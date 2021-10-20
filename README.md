@@ -25,7 +25,7 @@ Level 2 - Database Security - Data Encryption
 ===
 
 NPM Package(s) Used:
-mongoose-encryption
+- mongoose-encryption
 
 In this method, a secret keyword is saved as an environmental variable by the programmer. This keyword is used by a special function to encrypt the passwords. As long as the secret keyword is not exposed to the hacker, person cannot decode the password.
 
@@ -53,7 +53,7 @@ Level 3 - Database Security - Password Hashing
 ===
 
 NPM Package(s) Used:
-md5
+- md5
 
 This is a special type of function such as MD5 which converts normal password into a hashed version. Hash functions are super easy to encrypt but very hard to decode. It is like a one way ticket. So even if a hacker, hacks into your database, they can still not get the actual password of the people because decoding the passwords is almost impossible due to the nature of hashing functions.
 
@@ -74,8 +74,8 @@ Level 4 - Database Security - Password Hashing and Salting, Salting Rounds
 ===
 
 NPM Package(s) Used:
-md5
-bycrypt
+- md5
+- bycrypt
 
 In password salting, a randomized combination added into the database. This randomized combination is concatenated into the existing password by NPM package "bycrypt". An example is given below.
 
