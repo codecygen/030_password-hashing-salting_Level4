@@ -1,5 +1,5 @@
 {
-  "name": "030_Hashing-Salting_md5_bcrypt_Level4",
+  "name": "027_secrets-starting-code",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
