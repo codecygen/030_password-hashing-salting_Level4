@@ -74,7 +74,6 @@ Level 4 - Database Security - Password Hashing and Salting, Salting Rounds
 ===
 
 NPM Package(s) Used:
-- md5
 - bycrypt
 
 In password salting, a randomized combination added into the database. This randomized combination is concatenated into the existing password by NPM package "bycrypt". An example is given below.

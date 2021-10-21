@@ -4,8 +4,9 @@ const express = require('express');
 const ejs = require('ejs');
 // Initialize Express
 
-// Include password hashing package
-const md5 = require('md5');
+// password hashing and salting package
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const app = express();
 
@@ -45,18 +46,21 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    const newUser = new User({
-        email: req.body.username,
-        password: md5(req.body.password)
-    });
 
-    newUser.save((err) => {
-        if(err){
-            console.error(err);
-        } else {
-            console.log('New user added!');
-            res.render('secrets');
-        }
+    bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+        const newUser = new User({
+            email: req.body.username,
+            password: hash
+        });
+    
+        newUser.save((err) => {
+            if(err){
+                console.error(err);
+            } else {
+                console.log('New user added!');
+                res.render('secrets');
+            }
+        });
     });
 });
 
@@ -85,19 +89,21 @@ app.post('/register', (req, res) => {
 
 app.post('/login', (req, res) => {
     const email = req.body.username;
-    const password = md5(req.body.password);
+    const password = req.body.password;
 
     User.findOne({email: email}, (err, user) => {
         if(err) {
             console.error(err);
         } else {
             if(user){
-                if(user.password === password) {
-                    console.log('You are already registered!');
-                    res.render('secrets');
-                } else {
-                    console.error('Wrong password!');
-                }
+                bcrypt.compare(password, user.password, (err, result) => {
+                    if(result === true) {
+                        console.log('You are already registered!');
+                        res.render('secrets');
+                    } else {
+                        console.error('Wrong password!');
+                    }
+                });
             } else {
                 console.error('You are never registered!');
             }
